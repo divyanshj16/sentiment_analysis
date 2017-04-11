@@ -1,7 +1,6 @@
 from textblob import TextBlob
 import tweepy
 import csv
-import re
 
 def polarity(polarity):
     if polarity > 0: return 'positive'
@@ -22,7 +21,11 @@ auth.set_access_token(access_token,access_token_secret)
 
 api = tweepy.API(auth)
 
-public_tweets = api.search('Trump')
+
+
+var = input("Enter topic to be searched: ")
+
+public_tweets = api.search(var) #Change here to get tweets of any topic
 
 with open('sentiments.csv','w') as csvfile:
     csvfile = csv.writer(csvfile, delimiter=',', quotechar='|')
